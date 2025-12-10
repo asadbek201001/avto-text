@@ -1,225 +1,241 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
 
-
 // Photos 
 import PhoneIconn from "../image/PhoneIconn.png";
 import Pin from "../image/Pin.png"
 import Time from "../image/Time.png";
 
+// Import ROUTES
+import ROUTES from "../router/routes"; // ROUTES faylining yo'lini to'g'ri ko'rsating
+
 const HeaderContainer = styled.div`
   width: 100%;
   background-color: white;
-  border-bottom: 1px solid #e0e0e0;
+  font-family: 'Arial', sans-serif;
 `;
 
 const TopBar = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 8px 40px;
+  padding: 10px 0;
   background-color: #000000;
-  font-size: 14px;
-  width:100%;
-  color: #000000;
-  border-bottom: 1px solid #e0e0e0;
+  height: 40px;
+  width: 100%;
 `;
 
-const ContactInfo = styled.div`
+const TopBarContent = styled.div`
   display: flex;
-  margin-left:240px;
-  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  color: white;
+  font-size: 13px;
 `;
 
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
-  color: white;
-  gap: 5px;
+  gap: 8px;
 `;
 
-const MiddleBar = styled.div`
+const SocialIcons = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-left: 10px;
+`;
+
+const IconLink = styled.a`
+  color: #fff;
+  font-size: 12px;
+  transition: 0.3s ease;
+
+  &:hover {
+    color: #d4af37;
+  }
+`;
+
+const MainHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
 `;
 
-const Logo = styled.div`
-  font-size: 35px;
+const Logo = styled(Link)`
+  font-size: 32px;
   font-weight: bold;
-  margin-left:240px;
   font-family: 'Playfair Display', serif;
   color: #000000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const NavMenu = styled.nav`
   display: flex;
-  gap: 30px;
+  gap: 35px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
-const NavItem = styled.a`
+const NavItem = styled(Link)`
   text-decoration: none;
   color: #333;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 400;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: all 0.3s;
   
   &:hover {
-    color: #007bff;
+    color: #000;
+    font-weight: 500;
+  }
+
+  &.active {
+    color: #000;
+    font-weight: 600;
+    border-bottom: 2px solid #000;
   }
 `;
 
-const RightSection = styled.div`
+const IconsContainer = styled.div`
   display: flex;
-  align-items: center;
   gap: 20px;
+  align-items: center;
 `;
-
-const SearchIcon = styled.div`
-  font-size: 20px;
-  cursor: pointer;
-`;
-
-const LanguageSelector = styled.div`
-  font-size: 14px;
-  color: #666;
-  cursor: pointer;
-`;
-
-
-const PhoneIcon = styled.img`
-  width: 25px;
-  height: auto;
-  /* margin-right: 5px; */
-`;
-
-
-const PinIcon = styled.img`
-  width: 18px;
-  height: auto;
-  /* margin-right: 5px; */
-`;
-
-
-const TimeIcon = styled.img`
-  width:16px;
-  height:auto;
-
-`
-;
-
-
-const IconLink = styled.a`
-  color: #fff;
-  font-size: 14px;
-  transition: 0.3s ease;
-
-  &:hover {
-    color: #d4af37; /* oltin rang hover */
-    transform: scale(1.1);
-  }
-`;
-
-
-const CtnForFaIcons = styled.div`
-  display:flex;
-  gap:20px;
-`
-;
-
-
 
 const IconBox = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   color: #000;
   position: relative;
   cursor: pointer;
-  margin-right:5px;
+  
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const CartBadge = styled.div`
   position: absolute;
-  top: -6px;
-  right: -8px;
+  top: -5px;
+  right: -6px;
   background: #000;
   color: #fff;
-  font-size: 10px;
-  padding: 2px 6px;
+  font-size: 9px;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
-  font-weight: bold;
 `;
 
+const PhoneIcon = styled.img`
+  width: 14px;
+  height: 14px;
+  filter: invert(1);
+`;
 
+const PinIcon = styled.img`
+  width: 14px;
+  height: 14px;
+  filter: invert(1);
+`;
 
+const TimeIcon = styled.img`
+  width: 14px;
+  height: 14px;
+  filter: invert(1);
+`;
 
-
+const Separator = styled.span`
+  color: #666;
+`;
 
 export default function Header() {
   return (
     <HeaderContainer>
-      {/* Top bar - contact information */}
+      {/* Top bar - bir qatorda markazda */}
       <TopBar>
-        <ContactInfo>
+        <TopBarContent>
           <ContactItem>
-            <PhoneIcon src={PhoneIconn} alt="Phone Icon" />
+            <PhoneIcon src={PhoneIconn} alt="Phone" />
             <span>+998 906815007</span>
           </ContactItem>
+          
+          <Separator>|</Separator>
+          
           <ContactItem>
-            <PinIcon src={Pin} />
+            <PinIcon src={Pin} alt="Location" />
             <span>Ukraine, Kyiv, Khreshchatyk 1</span>
           </ContactItem>
+          
+          <Separator>|</Separator>
+          
           <ContactItem>
-            <TimeIcon src={Time} />
+            <TimeIcon src={Time} alt="Time" />
             <span>All week 24/7</span>
           </ContactItem>
-        </ContactInfo>
-
-<CtnForFaIcons>
-
-           <IconLink href="#"><FaFacebookF /></IconLink>
-      <IconLink href="#"><FaTwitter /></IconLink>
-      <IconLink href="#"><FaInstagram /></IconLink>
-      <IconLink href="#"><FaPinterestP /></IconLink>
-
-      </CtnForFaIcons>
-
-      {/* Asadbek, IconLink ishlashi uchun isntall qilasan ---> npm install react-icons */}
+          
+          <SocialIcons>
+            <IconLink href="#" target="_blank" rel="noopener noreferrer">
+              <FaFacebookF />
+            </IconLink>
+            <IconLink href="#" target="_blank" rel="noopener noreferrer">
+              <FaTwitter />
+            </IconLink>
+            <IconLink href="#" target="_blank" rel="noopener noreferrer">
+              <FaInstagram />
+            </IconLink>
+            <IconLink href="#" target="_blank" rel="noopener noreferrer">
+              <FaPinterestP />
+            </IconLink>
+          </SocialIcons>
+        </TopBarContent>
       </TopBar>
 
-      {/* Main navigation bar */}
-      <MiddleBar>
-        {/* Logo */}
-        <Logo>MiSto</Logo>
-
-        {/* Navigation menu */}
+      {/* Main header */}
+      <MainHeader>
+        {/* Logo - HOME sahifasiga link */}
+        <Logo to={ROUTES.HOME}>MiSto</Logo>
+        
+        {/* Navigation menu - ROUTES ga asoslangan */}
         <NavMenu>
-          <NavItem>AboutUs</NavItem>
-          <NavItem>Women</NavItem>
-          <NavItem>Men</NavItem>
-          <NavItem>Electronics</NavItem>
-          <NavItem>Jewelery</NavItem>
-          <NavItem>Contact</NavItem>
-
-
-       
+          <NavItem to={ROUTES.ABOUT}>AboutUs</NavItem>
+          <NavItem to={ROUTES.WOMEN}>Women</NavItem>
+          <NavItem to={ROUTES.MEN}>Men</NavItem>
+          <NavItem to={ROUTES.ELECTRONICS}>Electronics</NavItem>
+          <NavItem to={ROUTES.JEWELERY}>Jewelery</NavItem>
+          <NavItem to={ROUTES.CONTACT}>Contact</NavItem>
         </NavMenu>
-
-        {/* Right section */}
-        <CtnForFaIcons>
-       <IconBox><FiSearch /></IconBox>
-      <IconBox><AiOutlineGlobal /></IconBox>
-      <IconBox>
-        <BsBag />
-        <CartBadge>0</CartBadge>
-      </IconBox>
-      </CtnForFaIcons>
-      </MiddleBar>
+        
+        {/* Icons */}
+        <IconsContainer>
+          <IconBox>
+            <FiSearch />
+          </IconBox>
+          <IconBox>
+            <AiOutlineGlobal />
+          </IconBox>
+          <IconBox>
+            <BsBag />
+            <CartBadge>0</CartBadge>
+          </IconBox>
+        </IconsContainer>
+      </MainHeader>
     </HeaderContainer>
   );
 }

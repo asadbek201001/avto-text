@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 //components
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 //images
 
@@ -23,6 +24,8 @@ export default function Home() {
     return (
         <>
         <Header />
+
+        <Footer />
         
         </>
     )
