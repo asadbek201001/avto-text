@@ -29,7 +29,6 @@ const ContactWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 1100px;
   padding: 40px;
@@ -63,6 +62,7 @@ const ContactCard = styled.div`
   flex-direction: column;
   padding: 20px;
   cursor: pointer;
+  font-weight: 200;
   transition: all 0.3s ease;
 
   &:hover {
@@ -89,15 +89,23 @@ const ContactInfo = styled.p`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
+
+  h1 {
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
 `;
 
 const Input = styled.input`
   padding: 12px 16px;
-  border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
+  width: 100%;
 `;
+
 
 const TextArea = styled.textarea`
   padding: 12px 16px;
@@ -106,6 +114,7 @@ const TextArea = styled.textarea`
   font-size: 14px;
   resize: vertical;
   min-height: 120px;
+  width: 100%;
 `;
 
 const SendButton = styled.button`
@@ -114,6 +123,7 @@ const SendButton = styled.button`
   color: white;
   border: none;
   border-radius: 8px;
+  width: 200px;
   font-size: 16px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -144,6 +154,7 @@ export default function Contact() {
         </ContactBoxes>
 
         <Form>
+            <h1>Contact Form</h1>
           <Input type="text" placeholder="Your Name *" required />
           <Input type="email" placeholder="Your Email *" required />
           <Input type="text" placeholder="Subject *" required />
