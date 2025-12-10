@@ -18,6 +18,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   background-color: white;
   font-family: 'Arial', sans-serif;
+border-bottom: 0.1px solid #6c6c6c;
 `;
 
 const TopBar = styled.div`
