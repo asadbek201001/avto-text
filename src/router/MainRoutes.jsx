@@ -7,6 +7,7 @@ import Women from "../pages/Women";
 import Men from "../pages/Men";
 import Jewelery from "../pages/Jewelery";
 import Electronics from "../pages/Electronics";
+import Contact from "../pages/Contact";
 
 
 const MainRoutes = () => {
@@ -19,6 +20,7 @@ const MainRoutes = () => {
             <Route path={ROUTES.MEN} element={ <Men /> } ></Route>
             <Route path={ROUTES.JEWELERY} element={ <Jewelery /> } ></Route>
             <Route path={ROUTES.ELECTRONICS} element={ <Electronics /> } ></Route>
+            <Route path={ROUTES.CONTACT} element={<Contact/>}></Route>
         </Routes>
         </>
     )
