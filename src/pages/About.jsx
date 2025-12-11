@@ -243,6 +243,8 @@ export default function About() {
       text: "But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
     },
     // Qo'shimcha postlar (SEE ALL bosilganda chiqadi)
+
+
     {
       id: 4,
       title: "SUMMER COLLECTION",
@@ -261,24 +263,6 @@ export default function About() {
       image: Image39,
       text: "But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
     },
-    {
-      id: 7,
-      title: "STREET STYLE",
-      image: Image37,
-      text: "But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
-    },
-    {
-      id: 8,
-      title: "MINIMALIST DESIGN",
-      image: Image38,
-      text: "But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
-    },
-    {
-      id: 9,
-      title: "ECO FRIENDLY FASHION",
-      image: Image39,
-      text: "But I must explain to you how all this mistaken idea of denouncing pleas and praising pain was bor"
-    }
   ];
 
   // Ko'rsatiladigan postlar (SEE ALL holatiga qarab)
