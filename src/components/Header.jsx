@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaPinterestP, FaBars, FaTimes } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { BsBag } from "react-icons/bs";
@@ -12,13 +12,17 @@ import Pin from "../image/Pin.png"
 import Time from "../image/Time.png";
 
 // Import ROUTES
-import ROUTES from "../router/routes"; // ROUTES faylining yo'lini to'g'ri ko'rsating
+import ROUTES from "../router/routes";
 
 const HeaderContainer = styled.div`
   width: 100%;
   background-color: white;
   font-family: 'Arial', sans-serif;
-border-bottom: 0.1px solid #6c6c6c;
+  border-bottom: 0.01px solid #cbcbcb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 `;
 
 const TopBar = styled.div`
@@ -29,6 +33,15 @@ const TopBar = styled.div`
   background-color: #000000;
   height: 40px;
   width: 100%;
+  
+  @media (max-width: 1024px) {
+    padding: 8px 0;
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const TopBarContent = styled.div`
@@ -38,18 +51,38 @@ const TopBarContent = styled.div`
   gap: 25px;
   color: white;
   font-size: 13px;
+  
+  @media (max-width: 1024px) {
+    gap: 15px;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+  
+  @media (max-width: 860px) {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
 `;
 
 const ContactItem = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  
+  @media (max-width: 1024px) {
+    gap: 6px;
+  }
 `;
 
 const SocialIcons = styled.div`
   display: flex;
   gap: 12px;
   margin-left: 10px;
+  
+  @media (max-width: 1024px) {
+    gap: 8px;
+    margin-left: 5px;
+  }
 `;
 
 const IconLink = styled.a`
@@ -66,9 +99,13 @@ const MainHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  max-width: 1200px;
+  padding: 15px 5%;
+  max-width: 1400px;
   margin: 0 auto;
+  
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+  }
 `;
 
 const Logo = styled(Link)`
@@ -78,9 +115,17 @@ const Logo = styled(Link)`
   color: #000000;
   text-decoration: none;
   transition: opacity 0.3s;
+  z-index: 1001;
 
   &:hover {
     opacity: 0.8;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 `;
 
@@ -90,8 +135,17 @@ const NavMenu = styled.nav`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  
+  @media (max-width: 1024px) {
+    gap: 25px;
+  }
+  
+  @media (max-width: 900px) {
+    display: none;
+  }
 `;
 
+// Bu yerda NavItem komponenti aniqlangan
 const NavItem = styled(Link)`
   text-decoration: none;
   color: #333;
@@ -112,10 +166,75 @@ const NavItem = styled(Link)`
   }
 `;
 
+const MobileMenuToggle = styled.div`
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #000;
+  z-index: 1001;
+  
+  @media (max-width: 900px) {
+    display: block;
+  }
+`;
+
+const MobileNavMenu = styled.div`
+  display: none;
+  position: fixed;
+  top: 0;
+  right: ${props => props.isOpen ? '0' : '-100%'};
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+  z-index: 1000;
+  padding: 80px 30px 30px;
+  box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+  
+  @media (max-width: 900px) {
+    display: block;
+  }
+  
+  @media (max-width: 480px) {
+    width: 280px;
+  }
+`;
+
+const MobileNavItem = styled(Link)`
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.3s;
+  
+  &:hover {
+    color: #000;
+    font-weight: 500;
+  }
+
+  &.active {
+    color: #000;
+    font-weight: 600;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
 const IconsContainer = styled.div`
   display: flex;
   gap: 20px;
   align-items: center;
+  
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
 `;
 
 const IconBox = styled.div`
@@ -126,6 +245,10 @@ const IconBox = styled.div`
   
   &:hover {
     opacity: 0.7;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
   }
 `;
 
@@ -164,9 +287,58 @@ const TimeIcon = styled.img`
 
 const Separator = styled.span`
   color: #666;
+  
+  @media (max-width: 860px) {
+    display: none;
+  }
+`;
+
+const MobileContactInfo = styled.div`
+  display: none;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  margin-top: 20px;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const MobileContactItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #333;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const Overlay = styled.div`
+  display: ${props => props.isOpen ? 'block' : 'none'};
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 999;
 `;
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <HeaderContainer>
       {/* Top bar - bir qatorda markazda */}
@@ -210,10 +382,15 @@ export default function Header() {
 
       {/* Main header */}
       <MainHeader>
-        {/* Logo - HOME sahifasiga link */}
-        <Logo to={ROUTES.HOME}>MiSto</Logo>
+        {/* Mobile menu toggle button */}
+        <MobileMenuToggle onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+        </MobileMenuToggle>
         
-        {/* Navigation menu - ROUTES ga asoslangan */}
+        {/* Logo - HOME sahifasiga link */}
+        <Logo to={ROUTES.HOME} onClick={closeMobileMenu}>MiSto</Logo>
+        
+        {/* Desktop Navigation menu */}
         <NavMenu>
           <NavItem to={ROUTES.ABOUT}>AboutUs</NavItem>
           <NavItem to={ROUTES.WOMEN}>Women</NavItem>
@@ -237,6 +414,34 @@ export default function Header() {
           </IconBox>
         </IconsContainer>
       </MainHeader>
+
+      {/* Mobile Navigation menu */}
+      <MobileNavMenu isOpen={isMobileMenuOpen}>
+        <MobileNavItem to={ROUTES.ABOUT} onClick={closeMobileMenu}>AboutUs</MobileNavItem>
+        <MobileNavItem to={ROUTES.WOMEN} onClick={closeMobileMenu}>Women</MobileNavItem>
+        <MobileNavItem to={ROUTES.MEN} onClick={closeMobileMenu}>Men</MobileNavItem>
+        <MobileNavItem to={ROUTES.ELECTRONICS} onClick={closeMobileMenu}>Electronics</MobileNavItem>
+        <MobileNavItem to={ROUTES.JEWELERY} onClick={closeMobileMenu}>Jewelery</MobileNavItem>
+        <MobileNavItem to={ROUTES.CONTACT} onClick={closeMobileMenu}>Contact</MobileNavItem>
+        
+        <MobileContactInfo>
+          <MobileContactItem>
+            <PhoneIcon src={PhoneIconn} alt="Phone" />
+            <span>+998 906815007</span>
+          </MobileContactItem>
+          <MobileContactItem>
+            <PinIcon src={Pin} alt="Location" />
+            <span>Ukraine, Kyiv</span>
+          </MobileContactItem>
+          <MobileContactItem>
+            <TimeIcon src={Time} alt="Time" />
+            <span>All week 24/7</span>
+          </MobileContactItem>
+        </MobileContactInfo>
+      </MobileNavMenu>
+
+      {/* Overlay for mobile menu */}
+      <Overlay isOpen={isMobileMenuOpen} onClick={closeMobileMenu} />
     </HeaderContainer>
   );
 }

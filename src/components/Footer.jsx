@@ -4,13 +4,12 @@ import styled from "styled-components";
 //images
 import CartImg from "../assets/carts.png";
 
-
-
 const FooterContainer = styled.footer`
   background-color: #fff;
   color: #000;
   font-family: 'Arial', sans-serif;
   width: 100%;
+  
 `;
 
 const NewsletterSection = styled.div`
@@ -19,8 +18,16 @@ const NewsletterSection = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
-  padding: 0 40px;
+  height: auto;
+  padding: 30px 20px;
+
+  @media (max-width: 768px) {
+    padding: 25px 15px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 10px;
+  }
 `;
 
 const NewsletterRow = styled.div`
@@ -31,10 +38,14 @@ const NewsletterRow = styled.div`
   width: 100%;
   justify-content: space-between;
 
+  @media (max-width: 1024px) {
+    gap: 20px;
+  }
+
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 20px;
-    padding: 20px 0;
+    padding: 0;
   }
 `;
 
@@ -46,6 +57,38 @@ const NewsletterTitle = styled.h2`
   letter-spacing: 1px;
   white-space: nowrap;
   margin: 0;
+
+  @media (max-width: 1024px) {
+    font-size: 22px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+`;
+
+const NewsletterForm = styled.div`
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  max-width: 500px;
+
+  @media (max-width: 1024px) {
+    max-width: 400px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 const EmailInput = styled.input`
@@ -54,7 +97,8 @@ const EmailInput = styled.input`
   border: none;
   color: #000;
   font-size: 14px;
-  width: 300px;
+  width: 100%;
+  min-width: 200px;
   
   &::placeholder {
     color: #777;
@@ -65,8 +109,9 @@ const EmailInput = styled.input`
   }
   
   @media (max-width: 768px) {
-    width: 100%;
-    max-width: 300px;
+    padding: 14px 20px;
+    font-size: 16px;
+    text-align: center;
   }
 `;
 
@@ -82,35 +127,58 @@ const SubscribeButton = styled.button`
   letter-spacing: 1px;
   transition: all 0.3s;
   white-space: nowrap;
+  min-width: 120px;
   
   &:hover {
     background-color: #eee;
   }
   
   @media (max-width: 768px) {
+    padding: 14px 40px;
+    font-size: 16px;
     width: 100%;
-    max-width: 300px;
   }
 `;
 
 const MainContent = styled.div`
   padding: 60px 40px 40px;
+
+  @media (max-width: 1024px) {
+    padding: 50px 30px 30px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 20px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 30px 15px 15px;
+  }
 `;
 
 const ColumnsGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 40px;
   margin-bottom: 60px;
 
+  @media (max-width: 1100px) {
+    gap: 30px;
+  }
+
   @media (max-width: 992px) {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 30px;
   }
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 30px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 25px;
   }
 `;
 
@@ -123,6 +191,16 @@ const ColumnTitle = styled.h3`
   color: #000;
   text-transform: uppercase;
   letter-spacing: 1px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
 `;
 
 const LinkList = styled.ul`
@@ -133,6 +211,18 @@ const LinkList = styled.ul`
 
 const LinkItem = styled.li`
   margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const FooterLink = styled.a`
@@ -140,9 +230,19 @@ const FooterLink = styled.a`
   text-decoration: none;
   font-size: 14px;
   transition: color 0.3s;
+  display: inline-block;
   
   &:hover {
     color: #000;
+    transform: translateX(3px);
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
   }
 `;
 
@@ -150,12 +250,28 @@ const ContactInfo = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
 `;
 
 const ContactItem = styled.div`
   color: #666;
   font-size: 14px;
   line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 const FooterBottom = styled.div`
@@ -170,6 +286,13 @@ const FooterBottom = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
+    gap: 25px;
+    padding-top: 25px;
+  }
+
+  @media (max-width: 480px) {
+    gap: 20px;
+    padding-top: 20px;
   }
 `;
 
@@ -177,28 +300,66 @@ const Copyright = styled.p`
   color: #666;
   font-size: 14px;
   font-weight: 300;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
 `;
 
 const PaymentInfo = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   color: #666;
   font-size: 14px;
   flex-wrap: wrap;
+  
   img {
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
+    height: auto;
   }
-`;
 
-const PaymentIcon = styled.span`
-  font-size: 16px;
+  @media (max-width: 1100px) {
+    img {
+      max-width: 350px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    width: 100%;
+    
+    img {
+      max-width: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    img {
+      max-width: 250px;
+    }
+  }
 `;
 
 const Designer = styled.p`
   color: #666;
   font-size: 14px;
   font-weight: 300;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    align-self: flex-end;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
 `;
 
 export default function Footer() {
@@ -208,11 +369,13 @@ export default function Footer() {
       <NewsletterSection>
         <NewsletterRow>
           <NewsletterTitle>BE IN TOUCH WITH US:</NewsletterTitle>
-          <EmailInput 
-            type="email" 
-            placeholder="Enter your email" 
-          />
-          <SubscribeButton>JOIN US</SubscribeButton>
+          <NewsletterForm>
+            <EmailInput 
+              type="email" 
+              placeholder="Enter your email" 
+            />
+            <SubscribeButton>JOIN US</SubscribeButton>
+          </NewsletterForm>
         </NewsletterRow>
       </NewsletterSection>
 
@@ -270,10 +433,10 @@ export default function Footer() {
           <Copyright>Copyright © 2022 all rights reserved.</Copyright>
           
           <PaymentInfo>
-           <img src={CartImg} alt="" />
+            <img src={CartImg} alt="Payment methods" />
           </PaymentInfo>
           
-          <Designer>Designed by Asadbek Gulomov</Designer>
+          <Designer>Designed by Asadbek G'ulomov</Designer>
         </FooterBottom>
       </MainContent>
     </FooterContainer>

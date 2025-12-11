@@ -15,6 +15,7 @@ const AboutCtn = styled.div`
   width: 100%;
   height: auto;
   background-color: white;
+  padding-top: 113px;
 `;
 
 const AboutSection = styled.div`

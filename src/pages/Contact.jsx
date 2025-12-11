@@ -34,6 +34,7 @@ const ContactWrapper = styled.div`
   padding: 40px;
   margin: 50px auto;
   border-radius: 20px;
+  padding-top: 113px;
   background-color: white;
 `;
 
