@@ -286,7 +286,7 @@ export default function About() {
           <h5>Home <strong>&gt; About Us</strong></h5>
           <h1>ABOUT US</h1>
           <img src={Chiziq3} alt="" />
-        </AboutSection>
+        </AboutSection> 
 
         <ImgSection>
           <LatestCard>
