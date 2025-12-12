@@ -27,6 +27,7 @@ const WomenCtn = styled.div`
   height: auto;
   background-color: white;
   padding: 50px 150px;
+  
 
   @media (max-width: 1200px) {
     padding: 40px 80px;
@@ -373,6 +374,8 @@ const AboutSection = styled.div`
   align-items: center;
   justify-content: space-evenly;
   font-weight: 200;
+  
+  
   
   h5 {
     font-weight: 100;
