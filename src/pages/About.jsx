@@ -6,7 +6,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 //images
-import Chiziq3 from "../assets/3chiziq.png"
+import Chiziq3 from "../assets/3chiziq.png";
 import Image37 from "../image/image37.png";
 import Image38 from "../image/image38.png";
 import Image39 from "../image/image39.png"
