@@ -547,8 +547,8 @@ export default function WomenCard() {
   return (
     <>
       <AboutSection>
-        <h5>Home <strong>&gt; WOMEN</strong></h5>
-        <h1>WOMEN</h1>
+        <h5>Home <strong>&gt; MEN</strong></h5>
+        <h1>MEN</h1>
         <img src={Chiziq3} alt="" />
       </AboutSection>
 
