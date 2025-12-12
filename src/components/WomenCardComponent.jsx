@@ -1,0 +1,397 @@
+import React, { useState } from "react";
+import styled from "styled-components";
+
+//images 
+import Image1 from "../image/image5.png"
+import Image2 from "../image/image6.png"
+import Image3 from "../image/image7.png"
+import Image4 from "../image/image8.png"
+import Image5 from "../image/image9.png";
+import Image6 from "../image/image10.png";
+import Image7 from "../image/image11.png";
+import Image8 from "../image/image12.png";
+
+import Image9 from "../image/image13.png"
+import Image10 from "../image/image14.png"
+import Image11 from "../image/image15.png"
+import Image12 from "../image/image16.png"
+import Image13 from "../image/image17.png";
+import Image14 from "../image/image18.png";
+import Image15 from "../image/image19.png";
+import Image16 from "../image/image20.png";
+
+const Container = styled.div`
+  width: 100%;
+  height: auto;
+  background-color: white;
+  padding: 10px 20px;
+
+  @media (max-width: 1200px) {
+    padding: 40px 80px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 35px 50px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 30px 30px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 25px 20px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 20px 15px;
+  }
+`;
+
+const ProductsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+`;
+
+const ProductCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition: transform 0.3s;
+  
+  &:hover {
+    transform: translateY(-5px);
+  }
+  
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 10px;
+  }
+`;
+
+const ProductImage = styled.img`
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 4px;
+
+  @media (max-width: 1200px) {
+    height: 300px;
+  }
+
+  @media (max-width: 992px) {
+    height: 280px;
+  }
+
+  @media (max-width: 768px) {
+    height: 250px;
+  }
+
+  @media (max-width: 576px) {
+    height: 220px;
+  }
+
+  @media (max-width: 480px) {
+    height: 280px;
+  }
+`;
+
+const ProductInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+const ProductTitle = styled.h3`
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  line-height: 1.3;
+
+  @media (max-width: 992px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 15px;
+  }
+`;
+
+const ProductSubtitle = styled.p`
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-weight: 300;
+
+  @media (max-width: 992px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 13px;
+  }
+`;
+
+const ProductPrice = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+
+  @media (max-width: 992px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 15px;
+  }
+`;
+
+const SeeAllCtn = styled.div`
+  width: 100%;
+  height: 50px;
+  background-color: rgb(238, 236, 236);
+  color: black;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 4px;
+  
+  &:hover {
+    background-color: rgb(220, 220, 220);
+  }
+  
+  h3 {
+    font-weight: 200;
+    margin: 0;
+    font-size: 16px;
+    color: #666;
+    
+    &:hover {
+      color: #000;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    height: 48px;
+    margin-top: 45px;
+  }
+  
+  @media (max-width: 992px) {
+    height: 46px;
+    margin-top: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    height: 44px;
+    margin-top: 35px;
+    
+    h3 {
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    height: 42px;
+    margin-top: 30px;
+    
+    h3 {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    height: 40px;
+    margin-top: 25px;
+  }
+`;
+
+export default function ProductCards() {
+  const [showAll, setShowAll] = useState(false);
+
+  const allProducts = [
+    {
+      id: 1,
+      title: "Women's Q109",
+      subtitle: "C'est la vie",
+      price: "$ 40.12",
+      image: Image1
+    },
+    {
+      id: 2,
+      title: "Cluse La Boheme Rose Gold",
+      subtitle: "C'est la vie",
+      price: "$ 30.99",
+      image: Image2
+    },
+    {
+      id: 3,
+      title: "Simple Skin T-shirt",
+      subtitle: "C'est la vie",
+      price: "$ 20.99",
+      image: Image3
+    },
+    {
+      id: 4,
+      title: "Cream women pants",
+      subtitle: "C'est la vie",
+      price: "$ 32.42",
+      image: Image4
+    },
+    {
+      id: 5,
+      title: "Ridley High Waist",
+      subtitle: "C'est la vie",
+      price: "$ 68.99",
+      image: Image5
+    },
+    {
+      id: 6,
+      title: "Short Sleeved Hoodie",
+      subtitle: "C'est la vie",
+      price: "$ 32.42",
+      image: Image6
+    },
+    {
+      id: 7,
+      title: "Skin Sweatpants",
+      subtitle: "C'est la vie",
+      price: "$ 21.11",
+      image: Image7
+    },
+    {
+      id: 8,
+      title: "Mercury Tee",
+      subtitle: "C'est la vie",
+      price: "$ 54.99",
+      image: Image8
+    },
+    {
+      id: 9,
+      title: "BIYLACLESEN Women's",
+      subtitle: "C'est la vie",
+      price: "$ 56.99",
+      image: Image9
+    },
+    {
+      id: 10,
+      title: "Lock and Love Women",
+      subtitle: "hello",
+      price: "$ 29.95",
+      image: Image10
+    },
+    {
+      id: 11,
+      title: "Rain Jacket Women",
+      subtitle: "hello",
+      price: "$ 39.99",
+      image: Image11
+    },
+    {
+      id: 12,
+      title: "MBJ Women's Solid Short Sleeve",
+      subtitle: "hello",
+      price: "$ 9.85",
+      image: Image12
+    },
+    {
+      id: 13,
+      title: "Opna Women's",
+      subtitle: "hello",
+      price: "$ 7.95",
+      image: Image13
+    },
+    {
+      id: 14,
+      title: "DANVOUY Womens",
+      subtitle: "hello",
+      price: "$ 12.99",
+      image: Image14
+    },
+    {
+      id: 15,
+      title: "Women's tracksuit Q109",
+      subtitle: "hello",
+      price: "$ 38.12",
+      image: Image15
+    },
+    {
+      id: 16,
+      title: "Cluse La Boheme Rose Gold",
+      subtitle: "hello",
+      price: "$ 30.99",
+      image: Image16
+    }
+  ];
+
+  // Ko'rsatiladigan mahsulotlar
+  const displayedProducts = showAll ? allProducts : allProducts.slice(0, 8);
+
+  const handleSeeAllClick = () => {
+    setShowAll(!showAll);
+  };
+
+  return (
+    <Container>
+      <ProductsGrid>
+        {displayedProducts.map((product) => (
+          <ProductCard key={product.id}>
+            <ProductImage src={product.image} alt={product.title} />
+            <ProductInfo>
+              <ProductTitle>{product.title}</ProductTitle>
+              <ProductSubtitle>{product.subtitle}</ProductSubtitle>
+              <ProductPrice>{product.price}</ProductPrice>
+            </ProductInfo>
+          </ProductCard>
+        ))}
+      </ProductsGrid>
+
+      <SeeAllCtn onClick={handleSeeAllClick}>
+        <h3>{showAll ? "HIDE ALL" : "SEE ALL"}</h3>
+      </SeeAllCtn>
+    </Container>
+  );
+}
