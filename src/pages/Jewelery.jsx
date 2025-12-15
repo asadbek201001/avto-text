@@ -521,7 +521,8 @@ export default function Jewelery() {
       title: "Diamond Stud Earrings",
       subtitle: "Natural diamond earrings",
       price: "$ 499.99",
-      image: Image2
+      image: Image2,
+      
     },
     {
       id: 3,
