@@ -150,6 +150,7 @@ export default function Contact() {
             <Icon src={PhoneImage}/>
             <ContactInfo>Phone</ContactInfo>
           </ContactCard>
+          
         </ContactBoxes>
 
         <Form>
