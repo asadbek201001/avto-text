@@ -421,9 +421,7 @@ export default function Footer() {
             <ColumnTitle>CONTACT US</ColumnTitle>
             <ContactInfo>
               <ContactItem>Ukraine, Kyiv, Khreshchatyk 1</ContactItem>
-              <ContactItem>+38 (050) 12 34 567</ContactItem>
               <ContactItem>All week 24/7</ContactItem>
-              <ContactItem>shaman.magic.music@gmail.com</ContactItem>
             </ContactInfo>
           </Column>
         </ColumnsGrid>

@@ -143,13 +143,11 @@ export default function Contact() {
         <ContactBoxes>
           <ContactCard bg="#ffffff">
             <Icon src={EmailImage}/>
-            <ContactInfo>dovudkhonhusanov5007@gmail.com</ContactInfo>
             <ContactInfo>Email Me</ContactInfo>
           </ContactCard>
 
           <ContactCard bg="#ffffff">
             <Icon src={PhoneImage}/>
-            <ContactInfo>+998976815007</ContactInfo>
             <ContactInfo>Phone</ContactInfo>
           </ContactCard>
         </ContactBoxes>

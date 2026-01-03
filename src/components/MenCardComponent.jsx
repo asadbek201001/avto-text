@@ -281,9 +281,10 @@ export default function ProductCards() {
     },
     {
       id: 9,
+      image: Image9,
       title: "Fjallraven - Foldsack",
       price: "$ 109.99",
-      image: Image9
+
     },
     {
       id: 10,

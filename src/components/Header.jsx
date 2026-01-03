@@ -344,25 +344,7 @@ export default function Header() {
       {/* Top bar - bir qatorda markazda */}
       <TopBar>
         <TopBarContent>
-          <ContactItem>
-            <PhoneIcon src={PhoneIconn} alt="Phone" />
-            <span>+998 906815007</span>
-          </ContactItem>
-          
-          <Separator>|</Separator>
-          
-          <ContactItem>
-            <PinIcon src={Pin} alt="Location" />
-            <span>Ukraine, Kyiv, Khreshchatyk 1</span>
-          </ContactItem>
-          
-          <Separator>|</Separator>
-          
-          <ContactItem>
-            <TimeIcon src={Time} alt="Time" />
-            <span>All week 24/7</span>
-          </ContactItem>
-          
+
           <SocialIcons>
             <IconLink href="#" target="_blank" rel="noopener noreferrer">
               <FaFacebookF />
